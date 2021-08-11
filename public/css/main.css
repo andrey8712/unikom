@@ -1,0 +1,4 @@
+.dataTables_paginate .paginate_button {
+    background-color: #FFF;
+    transition: none;
+}
