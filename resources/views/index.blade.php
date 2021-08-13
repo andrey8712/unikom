@@ -3,16 +3,17 @@
 @section('content')
 <div class="card">
     <div class="card-header header-elements-inline">
-        <h5 class="card-title">Заказы</h5>
+        <h5 class="card-title">Созданные заказы и доставки за {{now()->format('Y')}} год</h5>
     </div>
     <div class="card-body">
-        <form method="get" action="/">
+        {{--<form method="get" action="/">
             <div class="form-group row">
                 <div class="col-md-2">
                     <label class="form-group-float-label is-visible">Тип</label>
-                    <select class="select" name="month">
-                        <option value="1">Прибыль</option>
-                        <option value="2">Выручка</option>
+                    <select class="select" name="date_period">
+                        <option value="1">Неделя</option>
+                        <option value="2">Месяц</option>
+                        <option value="3">Год</option>
                     </select>
                 </div>
                 <div class="col-md-1">
@@ -28,7 +29,7 @@
                 </div>
             </div>
 
-        </form>
+        </form>--}}
         <div class="chart-container">
             <div class="chart has-fixed-height" id="columns_basic"></div>
         </div>
@@ -94,7 +95,7 @@
                 // Horizontal axis
                 xAxis: [{
                     type: 'category',
-                    data: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                    data: [{!! $dates !!}],
                     axisLabel: {
                         color: '#333'
                     },
@@ -141,7 +142,7 @@
                     {
                         name: 'Заказы',
                         type: 'bar',
-                        data: [2000.0, 490000, 70000, 23220, 256000, 76000, 13500, 16200, 32.6, 20.0, 6.4, 3.3],
+                        data: [{{$orders->implode(',')}}],
                         itemStyle: {
                             normal: {
                                 label: {
@@ -160,7 +161,7 @@
                     {
                         name: 'Доставки',
                         type: 'bar',
-                        data: [20000, 50000, 90000, 26000, 58.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+                        data: [{{$deliveries->implode(',')}}],
                         itemStyle: {
                             normal: {
                                 label: {

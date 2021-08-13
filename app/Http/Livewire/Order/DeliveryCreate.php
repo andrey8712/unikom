@@ -118,7 +118,7 @@ class DeliveryCreate extends Component
             $rulesCarrier = [
                 'city' => 'required|string',
                 'home' => 'required|string',
-                'street' => 'required|integer',
+                'street' => 'required|string',
                 'client_price' => 'required|integer',
                 'driver_price' => 'required|integer',
                 'surname' => 'required|string',

@@ -95,6 +95,7 @@
                 <th class="@if($sortColumn === 'current_status') {{$sortDirection === 'asc' ? 'sorting_asc' : 'sorting_desc'}} @else sorting @endif" wire:click="sortBy('current_status')">Статус</th>
                 <th class="@if($sortColumn === 'ttn_number') {{$sortDirection === 'asc' ? 'sorting_asc' : 'sorting_desc'}} @else sorting @endif" wire:click="sortBy('ttn_number')">ТТН</th>
                 <th class="@if($sortColumn === 'payment_status') {{$sortDirection === 'asc' ? 'sorting_asc' : 'sorting_desc'}} @else sorting @endif" wire:click="sortBy('payment_status')">Оплата</th>
+                <th class="@if($sortColumn === 'proxy_path') {{$sortDirection === 'asc' ? 'sorting_asc' : 'sorting_desc'}} @else sorting @endif" wire:click="sortBy('proxy_path')">Довер.</th>
                 <th>Водитель</th>
                 <th>Погр.</th>
                 <th>Товары в доставке</th>
@@ -130,6 +131,7 @@
                     <td>{!! $delivery->getStatusBadge() !!}</td>
                     <td>{{$delivery->ttn_number}}</td>
                     <td>@if($delivery->payment_status)<span class="badge badge-success">Получена</span>@else<span class="badge badge-danger">Нет</span> @endif </td>
+                    <td>@if($delivery->proxy_path)<a class="btn btn-sm btn-icon alpha-success text-info-800 ml-1 cursor-pointer" data-toggle="modal" data-target="#proxyModal" wire:click="getProxy({{$delivery->id}})"><i class="icon-eye"></i> </a>@else<span class="badge badge-danger">Нет</span> @endif </td>
                     <td>@if($delivery->driver){!! $delivery->driver->getShortFio() !!}<br>@endif @if($delivery->car)<span class="font-weight-black">{{$delivery->car->number}}</span> {{$delivery->car->model}}@endif</td>
                     <td>@if($delivery->loading_top)В @endif @if($delivery->loading_back)З @endif @if($delivery->loading_side)Б @endif</td>
                     <td>
@@ -268,8 +270,8 @@
                     </div>
 
                     <div class="modal-footer">
-                        {!! \App\Helpers\AppHelpers::closeButton() !!}
                         <button type="button" class="btn alpha-green text-green-800 ml-3" wire:click.prevent="setTtn()">Сохранить <i class="icon-checkmark2 ml-2"></i></button>
+                        {!! \App\Helpers\AppHelpers::closeButton() !!}
                     </div>
                 </form>
             </div>
@@ -291,8 +293,12 @@
                     </div>
 
                     <div class="modal-footer">
+                        @if($proxyViewMode)
+                            {!! \App\Helpers\AppHelpers::closeButton('Закрыть') !!}
+                        @else
                         {!! \App\Helpers\AppHelpers::closeButton() !!}
                         <button type="button" class="btn alpha-green text-green-800 ml-3" wire:click.prevent="sendProxy({{$deliveryId}})">Отправить <i class="icon-checkmark2 ml-2"></i></button>
+                        @endif
                     </div>
                 </form>
             </div>

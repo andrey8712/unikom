@@ -100,7 +100,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label>Телефон</label>
-                                    <input type="text" class="form-control" wire:model="phone">
+                                    <input type="text" wire:ignore onchange="@this.set('phone', this.value)" class="form-control phone" wire:model="phone">
                                     @error('phone')<label class="validation-invalid-label">{{ $message }}</label>@enderror
                                 </div>
                                 <div class="col-sm-6">
@@ -212,7 +212,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label>Телефон</label>
-                                    <input type="text" class="form-control" wire:model="phone">
+                                    <input type="text" wire:ignore onchange="@this.set('phone', this.value)" class="form-control phone" wire:model="phone">
                                     @error('phone')<label class="validation-invalid-label">{{ $message }}</label>@enderror
                                 </div>
                                 <div class="col-sm-6">
@@ -241,6 +241,7 @@
                     window.addEventListener('created', event => {
                         $('#updateModal').modal('hide');
                     })
+                    $('.phone').inputmask({'mask': '+7 (999) 999-9999', 'clearMaskOnLostFocus' : false, 'autoUnmask': true});
                 </script>
             </div>
         </div>

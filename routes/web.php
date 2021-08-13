@@ -14,37 +14,19 @@ use Illuminate\Support\Facades\Hash;
 */
 
 Route::get('/create-admin', function(){
-    $user = new \App\Models\User();
+    /*$user = new \App\Models\User();
 
     $user->name = 'Admin';
     $user->email = 'proger.gost@gmail.com';
     $user->password = Hash::make('hw1BRJXOP');
+    $user->saveOrFail();*/
+
+    $user = new \App\Models\User();
+
+    $user->name = 'Сергей';
+    $user->email = 'predwarr@gmail.com';
+    $user->password = Hash::make('Unikom56777');
     $user->saveOrFail();
-});
-
-Route::get('/test/{num}', function($num){
-
-    $numbers = explode('.', $num);
-
-    $out = '(';
-
-    $i = 0;
-
-    foreach ($numbers as $n) {
-        $out .= \App\Helpers\AppHelpers::number2string($n);
-        if(count($numbers) > 1) {
-            if($i === 0) {
-                $out .= ' целых ';
-            } else {
-                $out .= ' десятых';
-            }
-        }
-        $i++;
-    }
-
-    $out .= ')';
-
-    return $out;
 });
 
 Route::middleware('auth')->group(function(){
@@ -77,7 +59,7 @@ Route::middleware('auth')->group(function(){
     Route::get('orders', \App\Http\Livewire\Order\Table::class);
 
 
-    Route::view('drivers', 'livewire.drivers.index');
+    Route::get('drivers', \App\Http\Livewire\Driver\Table::class);
     Route::view('cars', 'livewire.cars.index');
     //Route::view('orders', 'livewire.order.index');
     //Route::view('orders/create', 'livewire.order.create');

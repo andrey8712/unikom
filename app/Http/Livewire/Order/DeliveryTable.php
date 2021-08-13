@@ -36,6 +36,7 @@ class DeliveryTable extends Component
     public $order;
 
     public $imagePath;
+    public $proxyViewMode = false;
 
     public function mount($id = null)
     {
@@ -110,11 +111,15 @@ class DeliveryTable extends Component
         }
 
         if(!$delivery->carrier->is_default) {
-            $this->dispatchBrowserEvent('add_notify', ['type' => 'danger', 'text' => 'Доверенность не может быть отправлена.', 'title' => 'Доставка №' . $delivery->id]);
+            $this->dispatchBrowserEvent('add_notify', ['type' => 'danger', 'text' => 'Доверенность не может быть отправлена. Чужой перевозчик', 'title' => 'Доставка №' . $delivery->id]);
             return;
         }
 
-        $image = \Intervention\Image\Facades\Image::make(storage_path('proxy_unikom.jpg'));
+        if($delivery->carrier_id == 1) {
+            $image = \Intervention\Image\Facades\Image::make(storage_path('proxy_semenov.jpg'));
+        } else {
+            $image = \Intervention\Image\Facades\Image::make(storage_path('proxy_unikom.jpg'));
+        }
 
         $fontPath = public_path('fonts/RF_Dewi_Bold.ttf');
 
@@ -216,6 +221,18 @@ class DeliveryTable extends Component
     {
         $this->imagePath = null;
         $this->deliveryId = null;
+        $this->proxyViewMode = false;
+    }
+
+    public function getProxy($id)
+    {
+        if(!$delivery = Delivery::find($id)) {
+            return;
+        }
+
+        $this->proxyViewMode = true;
+        $this->imagePath = '/storage/' . $delivery->proxy_path;
+        $this->deliveryId = $delivery->id;
     }
 
     public function sendProxy($id)

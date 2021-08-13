@@ -35,7 +35,7 @@ class Driver extends Component
         $this->middle_name = $driver->middle_name;
         $this->surname = $driver->surname;
         $this->passport_series_and_number = $driver->passport_series_and_number;
-        $this->passport_date_of_issue = $driver->passport_date_of_issue;
+        $this->passport_date_of_issue = $driver->passport_date_of_issue ? $driver->passport_date_of_issue->format('Y-m-d') : null;
         $this->passport_issued_by = $driver->passport_issued_by;
         $this->phone = $driver->phone;
         $this->email = $driver->email;
@@ -43,13 +43,13 @@ class Driver extends Component
 
     }
 
-    public function updated($field)
+    /*public function updated($field)
     {
         if ($field == 'phone')
         {
             $this->phone = Manny::mask($this->phone, "1 (111) 111-1111");
         }
-    }
+    }*/
 
     public function update()
     {

@@ -73,8 +73,12 @@ class DeliveryUpdate extends Component
         $this->auto_number = $delivery->car ? $delivery->car->number : null;
         $this->auto_model = $delivery->car ? $delivery->car->model : null;
 
-        foreach ($delivery->products as $product) {
-            $this->invoiceProducts[] = ['product_id' => $product->product_id, 'quantity' => $product->product_count];
+        if($delivery->products->count() > 0) {
+            foreach ($delivery->products as $product) {
+                $this->invoiceProducts[] = ['product_id' => $product->product_id, 'quantity' => $product->product_count];
+            }
+        } else {
+            $this->invoiceProducts[] = ['product_id' => 0, 'quantity' => 0];
         }
 
     }
@@ -95,6 +99,40 @@ class DeliveryUpdate extends Component
 
     public function store()
     {
+
+        $rulesCarrier = [];
+
+        if($this->carrier_id == 1 || $this->carrier_id == 2) {
+            $rulesCarrier = [
+                'city' => 'required|string',
+                'home' => 'required|string',
+                'street' => 'required|string',
+                'client_price' => 'required|integer',
+                'driver_price' => 'required|integer',
+                'surname' => 'required|string',
+                'name' => 'required|string',
+                'middle_name' => 'required|string',
+                'phone' => 'required|string',
+                'email' => 'nullable|email',
+                'passport_series_and_number' => 'required|digits:10',
+                'passport_date_of_issue' => 'required|date_format:"Y-m-d"',
+                'passport_issued_by' => 'required|string',
+                'auto_number' => 'required|string',
+                'auto_model' => 'required|string',
+            ];
+        }
+
+        $rules = [
+            'carrier_id' => 'required|integer',
+            'desired_date' => 'required|date_format:"Y-m-d"',
+            'invoiceProducts.0.product_id' => 'required|integer|min:1',
+            'invoiceProducts.0.quantity' => 'required|numeric|min:1',
+            'invoiceProducts.*.product_id' => 'nullable|integer|min:1',
+            'invoiceProducts.*.quantity' => 'nullable|numeric|min:1',
+        ];
+
+        $validatedDate = $this->validate($rules + $rulesCarrier);
+
         $delivery = Delivery::find($this->delivery->id);
 
         $delivery->carrier_id = $this->carrier_id;
