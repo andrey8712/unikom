@@ -47,6 +47,6 @@
     <meta name="robots" content="noindex, nofollow">
 </head>
 <body class="mlBodyBackground" style="padding: 0; margin: 0; -webkit-font-smoothing:antialiased; background-color:#F2EFEC; -webkit-text-size-adjust:none;">
-    <h1>{{$text}}</h1>
+    <h5>{{$text}}</h5>
 </body>
 </html>

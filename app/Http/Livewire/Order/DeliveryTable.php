@@ -10,6 +10,7 @@ use App\Entityes\DeliveryProducts;
 use App\Entityes\Order;
 use App\Helpers\AppHelpers;
 use App\Http\Livewire\Carrier;
+use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Image;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -237,7 +238,8 @@ class DeliveryTable extends Component
 
     public function sendProxy($id)
     {
-
+        //$mails = [''];
+        //Mail::to('proger.gost@gmail.com')->send()
     }
 
     public function setTtn()

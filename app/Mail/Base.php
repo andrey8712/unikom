@@ -24,7 +24,10 @@ class Base extends Mailable
     {
         $title = 'Заявка';
 
-        return $this->subject($title)->view('emails.base');
+        return $this->subject($title)->view('emails.base')->attach('/var/www/unikom/storage/app/public/proxies/546.jpg', [
+            'as' => 'proxy.jpg',
+            'mime' => 'application/jpg',
+        ]);
     }
 
 }
