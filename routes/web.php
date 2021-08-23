@@ -29,6 +29,10 @@ Route::get('/create-admin', function(){
     $user->saveOrFail();
 });
 
+Route::get('/test-email', function(){
+    \Illuminate\Support\Facades\Mail::to('proger.gost@gmail.com')->send(new \App\Mail\Base());
+});
+
 Route::middleware('auth')->group(function(){
 
     Route::get('logout', function(){
