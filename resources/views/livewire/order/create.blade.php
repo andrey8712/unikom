@@ -92,6 +92,39 @@
                     </div>
                 </div>
             </fieldset>
+            <fieldset class="mb-3">
+                <legend class="text-uppercase font-size-sm font-weight-bold">Адрес доставки</legend>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group form-group-float">
+                            <label class="form-group-float-label is-visible">Город</label>
+                            <input type="text" class="form-control" wire:model="city">
+                            @error('city')<label class="validation-invalid-label">{{ $message }}</label>@enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-float">
+                            <label class="form-group-float-label is-visible">Улица</label>
+                            <input type="text" class="form-control" wire:model="street">
+                            @error('street')<label class="validation-invalid-label">{{ $message }}</label>@enderror
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-group form-group-float">
+                            <label class="form-group-float-label is-visible">Строение</label>
+                            <input type="text" class="form-control" wire:model="home">
+                            @error('home')<label class="validation-invalid-label">{{ $message }}</label>@enderror
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group form-group-float">
+                            <label class="form-group-float-label is-visible">Коментарий</label>
+                            <textarea type="text" class="form-control" wire:model="address_comment"></textarea>
+                            @error('address_comment')<label class="validation-invalid-label">{{ $message }}</label>@enderror
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
             <fieldset class="mb-3" id="fieldset">
                 <legend class="text-uppercase font-size-sm font-weight-bold">Товары <a class="ml-2 btn btn-sm alpha-blue text-blue-800" href="/products/">Редактировать</a> </legend>
                 @foreach($invoiceProducts as $k => $invoiceProduct)

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrdersTable extends Migration
+class AddPaymentCommentFromOrder extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->integer('customer_id');
-            $table->smallInteger('customer_payment_status')->default(0);
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->text('customer_payment_status_comment')->after('address_comment')->nullable();
         });
     }
 
@@ -29,6 +25,8 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::table('order', function (Blueprint $table) {
+            //
+        });
     }
 }

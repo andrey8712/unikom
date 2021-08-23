@@ -13,6 +13,8 @@ class Table extends Component
 
     use WithPagination;
 
+    public $customer_payment_status_comment;
+
     public $sortColumn = 'id';
     public $sortDirection = 'desc';
     public $perPage = 25;
@@ -48,15 +50,35 @@ class Table extends Component
         $this->sortColumn = $column;
     }
 
-    public function setPaymentStatus($orderId, $status)
+    /*public function setPaymentComment($comment)
     {
-        $order = Order::find($orderId);
+        $order = Order::find($this->orderId);
 
-        $order->customer_payment_status = Order::PAYMENT_YES;
+        $order->customer_payment_status = $comment;
 
         $order->saveOrFail();
 
         $this->emit('refresh');
+
+        $this->dispatchBrowserEvent('add_notify', ['type' => 'success', 'text' => 'Оплата от грузополучателя получена.', 'title' => 'Заказ №' . $order->id]);
+    }*/
+
+    public function setPaymentStatus()
+    {
+        $order = Order::find($this->orderId);
+
+        $validatedDate = $this->validate([
+            'customer_payment_status_comment' => 'nullable|string',
+        ]);
+
+        $order->customer_payment_status = Order::PAYMENT_YES;
+        $order->customer_payment_status_comment = $this->customer_payment_status_comment;
+        $order->saveOrFail();
+
+        $this->dispatchBrowserEvent('close_modal');
+        $this->emit('refresh');
+
+        $this->customer_payment_status_comment = null;
 
         $this->dispatchBrowserEvent('add_notify', ['type' => 'success', 'text' => 'Оплата от грузополучателя получена.', 'title' => 'Заказ №' . $order->id]);
     }

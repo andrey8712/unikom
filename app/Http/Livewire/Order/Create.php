@@ -14,7 +14,7 @@ class Create extends Component
 {
 
     public $customer_title, $customer_inn, $customer_ogrn, $customer_address, $customer_phone, $customer_email, $customer_comment, $customer_price_limit = 0,
-        $desired_date, $comment, $customer_payment_status;
+        $desired_date, $comment, $customer_payment_status, $city, $street, $home, $address_comment;
 
     public $select_customer_id;
     public $invoiceProducts = [
@@ -49,6 +49,10 @@ class Create extends Component
         $this->customer_price_limit = $order->customer->price_limit;
         $this->desired_date = $order->desired_date->format('Y-m-d');
         $this->comment = $order->comment;
+        $order->city = $this->city;
+        $order->street = $this->street;
+        $order->home = $this->home;
+        $order->address_comment = $this->address_comment;
 
         $this->invoiceProducts = [];
 
@@ -68,6 +72,10 @@ class Create extends Component
         'customer_price_limit' => 'nullable|integer|min:0',
         'desired_date' => 'required|date_format:"Y-m-d"',
         'comment' => 'nullable|string',
+        'city' => 'required|string',
+        'street' => 'required|string',
+        'home' => 'required|string',
+        'address_comment' => 'nullable|string',
         //'customer_payment_status' => 'nullable|bool',
         'invoiceProducts.0.product_id' => 'required|integer|min:1',
         'invoiceProducts.0.quantity' => 'required|numeric|min:1',
@@ -115,6 +123,10 @@ class Create extends Component
 
         $order->desired_date = $this->desired_date;
         $order->comment = $this->comment;
+        $order->city = $this->city;
+        $order->street = $this->street;
+        $order->home = $this->home;
+        $order->address_comment = $this->address_comment;
 
         $order->saveOrFail();
 

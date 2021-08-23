@@ -152,7 +152,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right">
                                     @if(!$order->customer_payment_status)
-                                        <a href="#" class="dropdown-item" wire:click="setPaymentStatus({{$order->id}}, 1)">Оплата получена</a>
+                                        <a href="#" class="dropdown-item" data-toggle="modal" data-target="#paymentModal" wire:click="setId({{$order->id}})">Оплата получена</a>
                                         <div class="dropdown-divider"></div>
                                     @endif
                                     @if(!$order->email_send)
@@ -225,6 +225,37 @@
                     <div class="modal-footer">
                         {!! \App\Helpers\AppHelpers::closeButton() !!}
                         <button type="button" wire:click.prevent="delete()"  class="btn alpha-danger text-danger-800">Удалить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div wire:ignore.self id="paymentModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h5 class="modal-title">Статус оплата получена</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label>Комментарий к оплате</label>
+                                        <textarea class="form-control" wire:model="customer_payment_status_comment"></textarea>
+                                        @error('customer_payment_status_comment')<label class="validation-invalid-label">{{ $message }}</label>@enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn alpha-green text-green-800 ml-3" wire:click.prevent="setPaymentStatus()">Сохранить <i class="icon-checkmark2 ml-2"></i></button>
+                        {!! \App\Helpers\AppHelpers::closeButton() !!}
                     </div>
                 </form>
             </div>

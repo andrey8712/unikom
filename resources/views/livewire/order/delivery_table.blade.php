@@ -217,7 +217,7 @@
         @else
             <tbody>
             <tr>
-                <td colspan="11"><div class="text-center">Записей не найдено.</div></td>
+                <td colspan="14"><div class="text-center">Записей не найдено.</div></td>
             </tr>
             </tbody>
         @endif

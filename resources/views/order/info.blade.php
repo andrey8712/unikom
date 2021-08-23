@@ -16,10 +16,13 @@
                     <ul class="list list-unstyled mb-0">
                         <li>Создан: <span class="font-weight-black">{{$order->created_at->format('d.m.Y h:i')}}</span></li>
                         <li>Желаемая дата доставки: <span class="font-weight-black">{{$order->desired_date->format('d.m.Y')}}</span></li>
+                        <li>Адрес: <span class="font-weight-black">{{$order->city}}, {{$order->street}} {{$order->home}}</span></li>
+                        <li>Коментарий к адресу: <span class="font-weight-black">{{$order->address_comment}}</span></li>
                         <li>Ответственный: <span class="font-weight-black">{{\Illuminate\Support\Facades\Auth::user()->name}}</span></li>
-                        <li>Оплата: @if($order->customer_payment_status)<span class="badge badge-success rounded-0">Получена</span> @else <span class="badge badge-danger rounded-0">Ожидается</span> @endif</li>
-                        <li>Заявка: @if($order->email_send)<span class="badge badge-success rounded-0">Отправлена</span> @else <span class="badge badge-danger rounded-0">В очереди</span> @endif</li>
-                        <li>Коментарий: <span class="font-weight-black">{{$order->comment}}</span></li>
+                        <li>Оплата от грузополучателя: @if($order->customer_payment_status)<span class="badge badge-success rounded-0">Получена</span> @else <span class="badge badge-danger rounded-0">Ожидается</span> @endif</li>
+                        <li>Коментарий к оплате: <span class="font-weight-black">{{$order->customer_payment_status_comment}}</span></li>
+                        <li>Заявка на завод: @if($order->email_send)<span class="badge badge-success rounded-0">Отправлена</span> @else <span class="badge badge-danger rounded-0">В очереди</span> @endif</li>
+                        <li>Коментарий к заказу: <span class="font-weight-black">{{$order->comment}}</span></li>
                     </ul>
                 </div>
                 <div class="col-md-6">
