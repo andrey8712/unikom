@@ -209,7 +209,7 @@
                         {{\App\Helpers\AppHelpers::formatPrice($deliveries->sum('profit'))}}{!! \App\Helpers\AppHelpers::currency() !!}
                     </span>
                 </td>
-                <td colspan="7">
+                <td colspan="8">
 
                 </td>
             </tr>
