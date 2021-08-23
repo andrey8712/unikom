@@ -120,7 +120,7 @@ class Customer extends CrudTable
         'phone' => 'required|string',
         'email' => 'nullable|email',
         'inn' => 'nullable|digits_between:10,12',
-        'ogrn' => 'nullable|digits:13',
+        'ogrn' => 'nullable|digits:13,15',
         'address' => 'nullable|string|min:1|max:255',
         'price_limit' => 'nullable|integer|min:0',
         'comment' => 'nullable|string',
