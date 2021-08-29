@@ -39,7 +39,7 @@
             <div class="card-header header-elements-inline">
                 <h5 class="card-title">Сотрудники</h5>
                 <div class="header-elements">
-                    <a type="button" class="btn alpha-blue text-blue-800 btn-labeled btn-labeled-left">
+                    <a type="button" data-toggle="modal" data-target="#userModal" class="btn alpha-blue text-blue-800 btn-labeled btn-labeled-left">
                         <b><i class="icon-plus22"></i></b>
                         Добавить
                     </a>
@@ -51,6 +51,57 @@
                     <li>{{$user->email}}: {{$user->surname}} {{$user->name}}</li>
                 @endforeach
                 </ul>
+            </div>
+        </div>
+    </div>
+    <div wire:ignore.self id="userModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h5 class="modal-title">Добавить сотрудника</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label>Имя</label>
+                                        <input type="text" class="form-control" wire:model="name">
+                                        @error('name')<label class="validation-invalid-label">{{ $message }}</label>@enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label>Фамилия</label>
+                                        <input type="text" class="form-control" wire:model="surname">
+                                        @error('surname')<label class="validation-invalid-label">{{ $message }}</label>@enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" wire:model="email">
+                                        @error('email')<label class="validation-invalid-label">{{ $message }}</label>@enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label>Пароль</label>
+                                        <input type="text" class="form-control" wire:model="password">
+                                        @error('password')<label class="validation-invalid-label">{{ $message }}</label>@enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn alpha-green text-green-800 ml-3" wire:click.prevent="storeUser()">Сохранить <i class="icon-checkmark2 ml-2"></i></button>
+                        {!! \App\Helpers\AppHelpers::closeButton() !!}
+                    </div>
+                </form>
             </div>
         </div>
     </div>
