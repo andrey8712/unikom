@@ -161,10 +161,11 @@
 
                                 </div>
                             @if($order->customer_payment_status == \App\Entityes\Order::PAYMENT_YES)
-                                <a class="btn btn-sm btn-icon alpha-info text-info-800 ml-1 cursor-pointer" href="/orders/info/{{$order->id}}"><i class="icon-eye"></i></a>
+                                {{--<a class="btn btn-sm btn-icon alpha-info text-info-800 ml-1 cursor-pointer" href="/orders/info/{{$order->id}}"><i class="icon-eye"></i></a>--}}
                             @else
                                 <a class="btn btn-sm btn-icon alpha-orange text-dark-800 ml-1" href="/orders/update/{{$order->id}}/"><i class="icon-pencil"></i></a>
                             @endif
+                            <a class="btn btn-sm btn-icon alpha-info text-info-800 ml-1 cursor-pointer" href="/orders/info/{{$order->id}}"><i class="icon-eye"></i></a>
                             <a class="btn btn-icon ml-2 btn-sm alpha-danger text-danger-800 ml-1" style="cursor: pointer" data-toggle="modal" data-target="#deleteModal" wire:click="setId({{$order->id}})"><i class="icon-trash-alt"></i></a>
                             </div>
                         </td>

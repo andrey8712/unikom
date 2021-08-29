@@ -26,7 +26,7 @@
                         <li>Паспорт: <span class="font-weight-black">{{$delivery->driver->passport_series_and_number}}, Выдан {{$delivery->driver->passport_date_of_issue}}, {{$delivery->driver->passport_issued_by}}</span></li>
                         <li>Автомобиль: <span class="font-weight-black">{{$delivery->car->number}}, {{$delivery->car->model}}</span></li>
                         <li>ТТН: №<span class="font-weight-black">{{$delivery->ttn_number}}</span></li>
-                        <li>Доверенность: <span class="font-weight-black"><a href="/storage/{{$delivery->proxy_path}}">Просмотр</a></span></li>
+                        <li>Доверенность: <span class="font-weight-black">@if($delivery->send_proxy)<a href="/storage/{{$delivery->proxy_path}}" target="_blank">Просмотр</a>@else Не отпралена @endif</span></li>
                     </ul>
                 </div>
             </div>

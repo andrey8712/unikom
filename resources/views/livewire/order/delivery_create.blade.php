@@ -64,7 +64,7 @@
                     <div class="col-md-2">
                         <div class="form-group form-group-float">
                             <label class="form-group-float-label is-visible">Город</label>
-                            <input type="text" class="form-control" wire:model="city">
+                            <input type="text" wire:ignore onchange="@this.set('city', this.value)" class="form-control city" wire:model="city">
                             @error('city')<label class="validation-invalid-label">{{ $message }}</label>@enderror
                         </div>
                     </div>
@@ -264,6 +264,7 @@
                 $('#select2-select-driver-id-container').html('<span class="select2-selection__placeholder">Введите фамилию</span>');
             })
             $('.phone').inputmask({'mask': '+7 (999) 999-9999', 'clearMaskOnLostFocus' : false, 'autoUnmask': true});
+            $('.city').inputmask({mask: "a Aa{3,}"});
             $('#select-driver-id').on('change', function (e) {
                 var data = $('#select-driver-id').select2('val');
                 console.log(data);

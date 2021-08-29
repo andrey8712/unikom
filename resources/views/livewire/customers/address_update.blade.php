@@ -13,7 +13,7 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <label>Город</label>
-                                <input type="text" class="form-control" wire:model="city">
+                                <input type="text" class="form-control city" wire:ignore onchange="@this.set('city', this.value)" wire:model="city">
                                 @error('city')<label class="validation-invalid-label">{{ $message }}</label>@enderror
                             </div>
                             <div class="col-sm-6">
