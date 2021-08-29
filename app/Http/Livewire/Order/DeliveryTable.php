@@ -22,6 +22,8 @@ class DeliveryTable extends Component
     use WithPagination;
 
     public $ttn;
+    public $status_delivery_comment;
+    public $status_payment_comment;
 
     public $sortColumn = 'id';
     public $sortDirection = 'desc';
@@ -264,6 +266,21 @@ class DeliveryTable extends Component
         $delivery->ttn_number = $this->ttn;
         $delivery->saveOrFail();
         $this->setStatus($delivery->id, Delivery::STATUS_COMPLETE);
+    }
+
+    public function setStatusDeliveryComment()
+    {
+        if(!$delivery = Delivery::find($this->deliveryId)) {
+            return;
+        }
+
+        $validatedDate = $this->validate([
+            'status_delivery_comment' => 'nullable|integer',
+        ]);
+
+        $delivery->status_delivery_comment = $this->status_delivery_comment;
+        $delivery->saveOrFail();
+        $this->setStatus($delivery->id, Delivery::STATUS_DELIVERY);
     }
 
     public function delete()

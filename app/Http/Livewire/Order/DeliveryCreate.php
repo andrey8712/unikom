@@ -44,12 +44,20 @@ class DeliveryCreate extends Component
             $this->order = Order::where('id', $orderId)->with('products')->first();
             $customer = $this->order->customer;
 
-            if($customer->addresses->count() > 0) {
+            /*if($customer->addresses->count() > 0) {
                 $this->city = $customer->addresses->last()->city;
                 $this->street = $customer->addresses->last()->street;
                 $this->home = $customer->addresses->last()->home;
                 $this->comment = $customer->addresses->last()->comment;
-            }
+            }*/
+
+            $this->city = $this->order->city;
+            $this->street = $this->order->street;
+            $this->home = $this->order->home;
+            $this->comment = $this->order->address_comment;
+            $this->loading_top = $this->order->loading_top;
+            $this->loading_back = $this->order->loading_back;
+            $this->loading_side = $this->order->loading_side;
 
             $orderProducts = new Collection();
 
