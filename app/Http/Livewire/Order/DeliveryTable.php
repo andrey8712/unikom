@@ -245,6 +245,9 @@ class DeliveryTable extends Component
 
         Mail::to('proger.gost@gmail.com')->send(new Base($delivery->proxy_path, $delivery->driver->surname . ' ' . $delivery->driver->name . ' ' . $delivery->driver->middle_name));
 
+        $delivery->send_proxy = 1;
+        $delivery->saveOrFail();
+        $this->dispatchBrowserEvent('close_modal');
         $this->dispatchBrowserEvent('add_notify', ['type' => 'success', 'text' => 'Доверенность отправлена.', 'title' => 'Доставка №' . $delivery->id]);
     }
 

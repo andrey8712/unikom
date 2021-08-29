@@ -131,7 +131,7 @@
                     <td>{!! $delivery->getStatusBadge() !!}</td>
                     <td>{{$delivery->ttn_number}}</td>
                     <td>@if($delivery->payment_status)<span class="badge badge-success">Получена</span>@else<span class="badge badge-danger">Нет</span> @endif </td>
-                    <td>@if($delivery->proxy_path)<a class="btn btn-sm btn-icon alpha-success text-info-800 ml-1 cursor-pointer" data-toggle="modal" data-target="#proxyModal" wire:click="getProxy({{$delivery->id}})"><i class="icon-eye"></i> </a>@else<span class="badge badge-danger">Нет</span> @endif </td>
+                    <td>@if($delivery->send_proxy)<a class="btn btn-sm btn-icon alpha-success text-info-800 ml-1 cursor-pointer" data-toggle="modal" data-target="#proxyModal" wire:click="getProxy({{$delivery->id}})"><i class="icon-eye"></i> </a>@else<span class="badge badge-danger">Нет</span> @endif </td>
                     <td>@if($delivery->driver){!! $delivery->driver->getShortFio() !!}<br>@endif @if($delivery->car)<span class="font-weight-black">{{$delivery->car->number}}</span> {{$delivery->car->model}}@endif</td>
                     <td>@if($delivery->loading_top)В @endif @if($delivery->loading_back)З @endif @if($delivery->loading_side)Б @endif</td>
                     <td>
