@@ -157,7 +157,7 @@
                             </div>
                         </div>
                     </td>--}}
-                    <td>
+                    <td class="text-right">
                         <div class="btn-group dropup">
                             <button type="button" class="btn btn-sm alpha-slate btn-icon dropdown-toggle" data-toggle="dropdown">
                                 <i class="icon-cog5"></i>

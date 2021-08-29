@@ -202,6 +202,24 @@
                             @error('desired_date')<label class="validation-invalid-label">{{ $message }}</label>@enderror
                         </div>
                     </div>
+                    <div class="col-md-5">
+                        <label class="d-block">Возможные типы погрузки</label>
+                        <div class="custom-control custom-checkbox custom-control-inline">
+                            <input type="checkbox" class="custom-control-input" id="check1" wire:model="loading_top">
+                            <label class="custom-control-label" for="check1">Верх</label>
+                        </div>
+                        <div class="custom-control custom-checkbox custom-control-inline">
+                            <input type="checkbox" class="custom-control-input" id="check2" wire:model="loading_back">
+                            <label class="custom-control-label" for="check2">Зад</label>
+                        </div>
+                        <div class="custom-control custom-checkbox custom-control-inline">
+                            <input type="checkbox" class="custom-control-input" id="check3" wire:model="loading_side">
+                            <label class="custom-control-label" for="check3">Бок</label>
+                        </div>
+                        @error('loading_top')<label class="validation-invalid-label">{{ $message }}</label>@enderror
+                        @error('loading_back')<label class="validation-invalid-label">{{ $message }}</label>@enderror
+                        @error('loading_side')<label class="validation-invalid-label">{{ $message }}</label>@enderror
+                    </div>
                     {{--<div class="col-md-2">
                         <label class="d-block">Предоплата от клиента</label>
                         <div class="custom-control custom-checkbox custom-control-inline">

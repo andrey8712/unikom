@@ -14,7 +14,7 @@ class Create extends Component
 {
 
     public $customer_title, $customer_inn, $customer_ogrn, $customer_address, $customer_phone, $customer_email, $customer_comment, $customer_price_limit = 0,
-        $desired_date, $comment, $customer_payment_status, $city, $street, $home, $address_comment;
+        $desired_date, $comment, $customer_payment_status, $city, $street, $home, $address_comment, $loading_top, $loading_back, $loading_side;
 
     public $select_customer_id;
     public $invoiceProducts = [
@@ -53,6 +53,9 @@ class Create extends Component
         $this->street = $order->street;
         $this->home = $order->home;
         $this->address_comment = $order->address_comment;
+        $this->loading_top = $order->loading_top;
+        $this->loading_back = $order->loading_back;
+        $this->loading_side = $order->loading_side;
 
         $this->invoiceProducts = [];
 
@@ -127,6 +130,9 @@ class Create extends Component
         $order->street = $this->street;
         $order->home = $this->home;
         $order->address_comment = $this->address_comment;
+        $order->loading_top = $this->loading_top;
+        $order->loading_back = $this->loading_back;
+        $order->loading_side = $this->loading_side;
 
         $order->saveOrFail();
 

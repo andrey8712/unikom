@@ -89,6 +89,7 @@
                 <th class="@if($sortColumn === 'sum_product') {{$sortDirection === 'asc' ? 'sorting_asc' : 'sorting_desc'}} @else sorting @endif" wire:click="sortBy('sum_product')">Закуп</th>
                 <th class="@if($sortColumn === 'sum_sale') {{$sortDirection === 'asc' ? 'sorting_asc' : 'sorting_desc'}} @else sorting @endif" wire:click="sortBy('sum_sale')">Продажа</th>
                 <th class="@if($sortColumn === 'sale_profit') {{$sortDirection === 'asc' ? 'sorting_asc' : 'sorting_desc'}} @else sorting @endif" wire:click="sortBy('sale_profit')">Прибыль</th>
+                <th>Погр.</th>
                 {{--<th>Прибыль от доставок</th>--}}
                 <th>Товары в заказе</th>
                 <th width="50px"></th>
@@ -108,7 +109,7 @@
                         <td><span class="font-weight-black">{{\App\Helpers\AppHelpers::formatPrice($order->sum_product)}}{!! \App\Helpers\AppHelpers::currency() !!}</span></td>
                         <td><span class="font-weight-black">{{\App\Helpers\AppHelpers::formatPrice($order->sum_sale)}}{!! \App\Helpers\AppHelpers::currency() !!}</span></td>
                         <td><span class="font-weight-black">{{\App\Helpers\AppHelpers::formatPrice($order->sale_profit)}}{!! \App\Helpers\AppHelpers::currency() !!}</span></td>
-                        {{--<td><span class="font-weight-black">0{!! \App\Helpers\AppHelpers::currency() !!}</span></td>--}}
+                        <td>@if($order->loading_top)В @endif @if($order->loading_back)З @endif @if($order->loading_side)Б @endif</td>
                         <td>
                             @foreach($order->productsWithDeliveries() as $k => $product)
                             - {{$product['title']}}: <span class="font-weight-black">{{$product['count']}}тн.</span>
@@ -144,7 +145,7 @@
                                 </div>
                             </div>
                         </td>--}}
-                        <td>
+                        <td class="text-right">
                             <div class="btn-group dropup">
                                 <button type="button" class="btn btn-sm alpha-slate btn-icon ml-1 dropdown-toggle" data-toggle="dropdown">
                                     <i class="icon-cog5"></i>

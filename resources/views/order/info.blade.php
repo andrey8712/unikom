@@ -23,6 +23,7 @@
                         <li>Коментарий к оплате: <span class="font-weight-black">{{$order->customer_payment_status_comment}}</span></li>
                         <li>Заявка на завод: @if($order->email_send)<span class="badge badge-success rounded-0">Отправлена</span> @else <span class="badge badge-danger rounded-0">В очереди</span> @endif</li>
                         <li>Коментарий к заказу: <span class="font-weight-black">{{$order->comment}}</span></li>
+                        <li>Погрузка: <span class="font-weight-black">@if($order->loading_top)В @endif @if($order->loading_back)З @endif @if($order->loading_side)Б @endif</span></li>
                     </ul>
                 </div>
                 <div class="col-md-6">
