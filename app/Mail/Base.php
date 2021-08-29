@@ -28,7 +28,7 @@ class Base extends Mailable
         $title = 'Доверенность ' . $this->text;
 
         //return $this->subject($title)->view('emails.base')->attach('/var/www/unikom/storage/app/public/proxies/546.jpg', [
-        return $this->subject($title)->view('emails.base')->attach(storage_path($this->link), [
+        return $this->subject($title)->view('emails.base')->attach(storage_path('app/public/'. $this->link), [
             'as' => $title . '.jpg',
             'mime' => 'application/jpg',
         ]);
