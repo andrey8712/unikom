@@ -17,6 +17,8 @@
                         <li>Ответственный: <span class="font-weight-black">{{\Illuminate\Support\Facades\Auth::user()->name}}</span></li>
                         <li>Оплата от завода: {{$delivery->client_price }}{!!\App\Helpers\AppHelpers::currency() !!} тн.@if($delivery->payment_status)<span class="badge badge-success rounded-0">Получена</span> @else <span class="badge badge-danger rounded-0">Ожидается</span> @endif</li>
                         <li>Коментарий: <span class="font-weight-black">{{$delivery->comment}}</span></li>
+                        <li>Коментарий к статусу отгружена: <span class="font-weight-black">{{$delivery->status_delivery_comment}}</span></li>
+                        <li>Коментарий к статусу оплачена водителю: <span class="font-weight-black">{{$delivery->status_payment_comment}}</span></li>
                     </ul>
                 </div>
                 <div class="col-md-6">

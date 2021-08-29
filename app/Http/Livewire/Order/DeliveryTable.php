@@ -275,7 +275,7 @@ class DeliveryTable extends Component
         }
 
         $validatedDate = $this->validate([
-            'status_delivery_comment' => 'nullable|integer',
+            'status_delivery_comment' => 'nullable|string',
         ]);
 
         $delivery->status_delivery_comment = $this->status_delivery_comment;
