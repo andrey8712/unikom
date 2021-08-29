@@ -52,6 +52,9 @@
                             <input type="checkbox" class="custom-control-input" id="check3" wire:model="loading_side">
                             <label class="custom-control-label" for="check3">Бок</label>
                         </div>
+                        @error('loading_top')<label class="validation-invalid-label">{{ $message }}</label>@enderror
+                        @error('loading_back')<label class="validation-invalid-label">{{ $message }}</label>@enderror
+                        @error('loading_side')<label class="validation-invalid-label">{{ $message }}</label>@enderror
                     </div>
                 </div>
             </fieldset>

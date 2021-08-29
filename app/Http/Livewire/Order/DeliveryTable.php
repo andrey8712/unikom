@@ -10,6 +10,7 @@ use App\Entityes\DeliveryProducts;
 use App\Entityes\Order;
 use App\Helpers\AppHelpers;
 use App\Http\Livewire\Carrier;
+use App\Mail\Base;
 use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Image;
 use Livewire\Component;
@@ -238,8 +239,13 @@ class DeliveryTable extends Component
 
     public function sendProxy($id)
     {
-        //$mails = [''];
-        //Mail::to('proger.gost@gmail.com')->send()
+        if(!$delivery = Delivery::find($id)) {
+            return;
+        }
+
+        Mail::to('proger.gost@gmail.com')->send(new Base($delivery->proxy_path, $delivery->driver->surname . ' ' . $delivery->driver->name . ' ' . $delivery->driver->middle_name));
+
+        $this->dispatchBrowserEvent('add_notify', ['type' => 'success', 'text' => 'Доверенность отправлена.', 'title' => 'Доставка №' . $delivery->id]);
     }
 
     public function setTtn()

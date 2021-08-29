@@ -144,6 +144,7 @@
                 });
             });
             $('.phone').inputmask({'mask': '+7 (999) 999-9999', 'clearMaskOnLostFocus' : false, 'autoUnmask': true});
+            $('.city').inputmask({mask: "a a{3,}"});
             $('#per_page').on('change', function (e) {
                 var data = $('#per_page').select2('val');
                 @this.set('perPage', data);

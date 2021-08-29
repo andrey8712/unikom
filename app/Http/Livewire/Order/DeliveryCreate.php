@@ -141,6 +141,9 @@ class DeliveryCreate extends Component
             'invoiceProducts.0.quantity' => 'required|numeric|min:1',
             'invoiceProducts.*.product_id' => 'nullable|integer|min:1',
             'invoiceProducts.*.quantity' => 'nullable|numeric|min:1',
+            'loading_top' => 'required_without_all:loading_back,loading_side',
+            'loading_back' => 'required_without_all:loading_top,loading_side',
+            'loading_side' => 'required_without_all:loading_top,loading_back',
         ];
 
         $validatedDate = $this->validate($rules + $rulesCarrier);

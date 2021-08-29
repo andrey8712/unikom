@@ -30,7 +30,7 @@ Route::get('/create-admin', function(){
 });
 
 Route::get('/test-email', function(){
-    \Illuminate\Support\Facades\Mail::to('proger.gost@gmail.com')->send(new \App\Mail\Base('Тестим меил почту'));
+    \Illuminate\Support\Facades\Mail::to('proger.gost@gmail.com')->send(new \App\Mail\Base('Доверенность на доставку.'));
 });
 
 Route::middleware('auth')->group(function(){

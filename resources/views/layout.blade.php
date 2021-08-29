@@ -28,7 +28,8 @@
         <script src="{{ asset('js/main/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('js/plugins/loaders/blockui.min.js') }}"></script>
         <script src="{{ asset('js/plugins/ui/slinky.min.js') }}"></script>
-        <script src="{{ asset('js/plugins/forms/inputs/inputmask.js') }}"></script>
+        {{--<script src="{{ asset('js/plugins/forms/inputs/inputmask.js') }}"></script>--}}
+        <script src="{{ asset('js/plugins/jquery.inputmask.bundle.js') }}"></script>
         <script src="{{ asset('js/plugins/forms/styling/uniform.min.js') }}"></script>
         <script src="{{ asset('js/plugins/forms/inputs/autosize.min.js') }}"></script>
         <script src="{{ asset('js/plugins/forms/inputs/formatter.min.js') }}"></script>
@@ -44,6 +45,7 @@
         {{--<script src="{{ asset('js/plugins/forms/styling/switch.min.js') }}"></script>--}}
         <script src="{{ asset('js/demo_pages/components_popups.js') }}"></script>
         <script src="{{ asset('js/plugins/visualization/echarts/echarts.min.js') }}"></script>
+        {{--<script src="https://rawgit.com/RobinHerbots/Inputmask/4.x/dist/jquery.inputmask.bundle.js"></script>--}}
         <script src="{{ asset('js/app.js') }}"></script>
         {{--<script src="{{ asset('js/demo_pages/form_controls_extended.js') }}"></script>
         <script src="{{ asset('js/demo_pages/form_validation.js') }}"></script>--}}
