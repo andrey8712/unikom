@@ -16,7 +16,7 @@
     <meta name="robots" content="noindex, nofollow">
 </head>
 <body>
-    <h5>{{$text}}</h5>
+    <p>Довереность {{$text}}</p>
     <p>
         С Уважением,<br>
         ООО "Уником"<br>

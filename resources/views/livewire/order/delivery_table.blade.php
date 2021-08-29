@@ -179,10 +179,11 @@
                                     @endif
                             </div>
                             @if($delivery->current_status >= 4)
-                                <a class="btn btn-sm btn-icon alpha-info text-info-800 ml-1 cursor-pointer" href="/deliveries/{{$delivery->id}}/info/"><i class="icon-eye"></i></a>
+                                {{--<a class="btn btn-sm btn-icon alpha-info text-info-800 ml-1 cursor-pointer" href="/deliveries/{{$delivery->id}}/info/"><i class="icon-eye"></i></a>--}}
                             @else
                                 <a class="btn btn-sm ml-1 btn-icon alpha-orange text-dark-800" href="/deliveries/{{$delivery->id}}/update/"><i class="icon-pencil"></i></a>
                             @endif
+                            <a class="btn btn-sm btn-icon alpha-info text-info-800 ml-1 cursor-pointer" href="/deliveries/{{$delivery->id}}/info/"><i class="icon-eye"></i></a>
                             <a class="btn btn-icon ml-1 btn-sm alpha-danger text-danger-800" style="cursor: pointer" data-toggle="modal" data-target="#deleteModal" wire:click="setId({{$delivery->id}})"><i class="icon-trash-alt"></i> </a>
                         </div>
                     </td>

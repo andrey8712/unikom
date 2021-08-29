@@ -49,10 +49,10 @@ class Create extends Component
         $this->customer_price_limit = $order->customer->price_limit;
         $this->desired_date = $order->desired_date->format('Y-m-d');
         $this->comment = $order->comment;
-        $order->city = $this->city;
-        $order->street = $this->street;
-        $order->home = $this->home;
-        $order->address_comment = $this->address_comment;
+        $this->city = $order->city;
+        $this->street = $order->street;
+        $this->home = $order->home;
+        $this->address_comment = $order->address_comment;
 
         $this->invoiceProducts = [];
 
