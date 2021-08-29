@@ -4,6 +4,7 @@
 namespace App\Entityes;
 
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -36,6 +37,10 @@ class Delivery extends Model
     public function car()
     {
         return $this->hasOne(Car::class, 'id', 'car_id');
+    }
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'created_by');
     }
 
     public function products()

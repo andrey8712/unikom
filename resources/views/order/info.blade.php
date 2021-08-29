@@ -18,7 +18,7 @@
                         <li>Желаемая дата доставки: <span class="font-weight-black">{{$order->desired_date->format('d.m.Y')}}</span></li>
                         <li>Адрес: <span class="font-weight-black">{{$order->city}}, {{$order->street}} {{$order->home}}</span></li>
                         <li>Коментарий к адресу: <span class="font-weight-black">{{$order->address_comment}}</span></li>
-                        <li>Ответственный: <span class="font-weight-black">{{\Illuminate\Support\Facades\Auth::user()->name}}</span></li>
+                        <li>Ответственный: @if($order->user)<span class="font-weight-black">{{$order->user->surname}} {{$order->user->name}}</span>@endif</li>
                         <li>Оплата от грузополучателя: @if($order->customer_payment_status)<span class="badge badge-success rounded-0">Получена</span> @else <span class="badge badge-danger rounded-0">Ожидается</span> @endif</li>
                         <li>Коментарий к оплате: <span class="font-weight-black">{{$order->customer_payment_status_comment}}</span></li>
                         <li>Заявка на завод: @if($order->email_send)<span class="badge badge-success rounded-0">Отправлена</span> @else <span class="badge badge-danger rounded-0">В очереди</span> @endif</li>

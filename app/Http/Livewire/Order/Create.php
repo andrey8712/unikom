@@ -133,6 +133,7 @@ class Create extends Component
         $order->loading_top = $this->loading_top;
         $order->loading_back = $this->loading_back;
         $order->loading_side = $this->loading_side;
+        $order->created_by = auth()->id();
 
         $order->saveOrFail();
 

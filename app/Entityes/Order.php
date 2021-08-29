@@ -4,6 +4,7 @@
 namespace App\Entityes;
 
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -40,6 +41,11 @@ class Order extends Model
     public function deliveries()
     {
         return $this->hasMany(Delivery::class, 'order_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'created_by');
     }
 
     public function productsWithDeliveries()

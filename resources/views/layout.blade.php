@@ -63,7 +63,7 @@
     <div class="navbar navbar-expand-md navbar-dark">
         <div class="navbar-brand wmin-0 mr-5">
             <a href="/" class="d-inline-block">
-                <img src="images/logo_light.png" alt="">
+                <img src="/images/logo_light.png" alt="">
             </a>
         </div>
 
@@ -317,6 +317,15 @@
                         <a href="/drivers" class="dropdown-item">Водители</a>
                         <a href="/cars" class="dropdown-item">Автомобили</a>
                     </div>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-md-auto">
+                <li class="nav-item">
+                    <a href="/settings/" class="navbar-nav-link">
+                        <i class="icon-cog mr-2"></i>
+                        Настройки
+                    </a>
                 </li>
             </ul>
 

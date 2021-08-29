@@ -8,6 +8,7 @@ use App\Entityes\Car;
 use App\Entityes\Delivery;
 use App\Entityes\DeliveryProducts;
 use App\Entityes\Order;
+use App\Entityes\Setting;
 use App\Helpers\AppHelpers;
 use App\Http\Livewire\Carrier;
 use App\Mail\Base;
@@ -245,7 +246,9 @@ class DeliveryTable extends Component
             return;
         }
 
-        Mail::to('proger.gost@gmail.com')->send(new Base($delivery->proxy_path, $delivery->driver->surname . ' ' . $delivery->driver->name . ' ' . $delivery->driver->middle_name));
+        $settings = Setting::first();
+
+        Mail::to($settings->proxy_email)->send(new Base($delivery->proxy_path, $delivery->driver->surname . ' ' . $delivery->driver->name . ' ' . $delivery->driver->middle_name));
 
         $delivery->send_proxy = 1;
         $delivery->saveOrFail();

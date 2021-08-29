@@ -172,6 +172,7 @@ class DeliveryCreate extends Component
         $delivery->driver_price = (int)$this->driver_price;
         $delivery->current_status = Delivery::STATUS_NEW;
         $delivery->payment_status = 0;
+        $delivery->created_by = auth()->id();
 
         $delivery->saveOrFail();
 

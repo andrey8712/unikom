@@ -117,7 +117,7 @@ class Table extends CrudTable
             $this->middle_name = $entity->middle_name;
             $this->surname = $entity->surname;
             $this->passport_series_and_number = $entity->passport_series_and_number;
-            $this->passport_date_of_issue = $entity->passport_date_of_issue;
+            $this->passport_date_of_issue = $entity->passport_date_of_issue ? $entity->passport_date_of_issue->format('Y-m-d') : null;
             $this->passport_issued_by = $entity->passport_issued_by;
             $this->phone = $entity->phone;
             $this->email = $entity->email;

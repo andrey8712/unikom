@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function(){
     Route::get('orders/create', \App\Http\Livewire\Order\Create::class);
     Route::get('orders', \App\Http\Livewire\Order\Table::class);
 
+    Route::get('settings', \App\Http\Livewire\Setting::class);
 
     Route::get('drivers', \App\Http\Livewire\Driver\Table::class);
     Route::view('cars', 'livewire.cars.index');

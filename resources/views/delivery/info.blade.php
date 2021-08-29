@@ -14,7 +14,7 @@
                         <li>Перевозчик: <span class="font-weight-black">{{$delivery->carrier->title}}</span></li>
                         <li>Желаемая дата доставки: <span class="font-weight-black">@if($delivery->desired_date){{$delivery->desired_date->format('d.m.Y')}}@endif</span></li>
                         <li>Адрес: <span class="font-weight-black">{{$delivery->city}}, {{$delivery->street}} {{$delivery->home}}</span></li>
-                        <li>Ответственный: <span class="font-weight-black">{{\Illuminate\Support\Facades\Auth::user()->name}}</span></li>
+                        <li>Ответственный: @if($delivery->user)<span class="font-weight-black">{{$delivery->user->surname}} {{$delivery->user->name}}</span>@endif</li>
                         <li>Оплата от завода: {{$delivery->client_price }}{!!\App\Helpers\AppHelpers::currency() !!} тн.@if($delivery->payment_status)<span class="badge badge-success rounded-0">Получена</span> @else <span class="badge badge-danger rounded-0">Ожидается</span> @endif</li>
                         <li>Коментарий: <span class="font-weight-black">{{$delivery->comment}}</span></li>
                         <li>Коментарий к статусу отгружена: <span class="font-weight-black">{{$delivery->status_delivery_comment}}</span></li>
