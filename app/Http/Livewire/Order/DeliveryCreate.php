@@ -248,7 +248,7 @@ class DeliveryCreate extends Component
             $this->surname = $selDriver->surname;
             $this->middle_name = $selDriver->middle_name;
             $this->passport_series_and_number = $selDriver->passport_series_and_number;
-            $this->passport_date_of_issue = $selDriver->passport_date_of_issue;
+            $this->passport_date_of_issue = $selDriver->passport_date_of_issue ? $selDriver->passport_date_of_issue->format('Y-m-d') : null;
             $this->passport_issued_by = $selDriver->passport_issued_by;
             $this->phone = $selDriver->phone;
             $this->email = $selDriver->email;
