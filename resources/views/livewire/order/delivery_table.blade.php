@@ -168,6 +168,8 @@
                                         <a href="#" class="dropdown-item" data-toggle="modal" data-target="#ttnModal" wire:click="setId({{$delivery->id}})">{{$status}}</a>
                                     @elseif($k == \App\Entityes\Delivery::STATUS_DELIVERY)
                                         <a href="#" class="dropdown-item" data-toggle="modal" data-target="#statusDeliveryCommentModal" wire:click="setId({{$delivery->id}})">{{$status}}</a>
+                                    @elseif($k == \App\Entityes\Delivery::STATUS_PAYMENT)
+                                        <a href="#" class="dropdown-item" data-toggle="modal" data-target="#statusPaymentCommentModal" wire:click="setId({{$delivery->id}})">{{$status}}</a>
                                     @else
                                         <a href="#" class="dropdown-item" wire:click="setStatus({{$delivery->id}}, {{$k}})">{{$status}}</a>
                                     @endif
@@ -304,6 +306,36 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn alpha-green text-green-800 ml-3" wire:click.prevent="setStatusDeliveryComment()">Сохранить <i class="icon-checkmark2 ml-2"></i></button>
+                        {!! \App\Helpers\AppHelpers::closeButton() !!}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div wire:ignore.self id="statusPaymentCommentModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h5 class="modal-title">Добавить коментарий к статусу оплачена для доставки №{{$deliveryId}}</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label>Коментарий</label>
+                                        <textarea type="text" class="form-control" wire:model="status_payment_comment"></textarea>
+                                        @error('status_payment_comment')<label class="validation-invalid-label">{{ $message }}</label>@enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn alpha-green text-green-800 ml-3" wire:click.prevent="setStatusPaymentComment()">Сохранить <i class="icon-checkmark2 ml-2"></i></button>
                         {!! \App\Helpers\AppHelpers::closeButton() !!}
                     </div>
                 </form>

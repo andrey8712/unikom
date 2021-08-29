@@ -283,6 +283,21 @@ class DeliveryTable extends Component
         $this->setStatus($delivery->id, Delivery::STATUS_DELIVERY);
     }
 
+    public function setStatusPaymentComment()
+    {
+        if(!$delivery = Delivery::find($this->deliveryId)) {
+            return;
+        }
+
+        $validatedDate = $this->validate([
+            'status_payment_comment' => 'nullable|string',
+        ]);
+
+        $delivery->status_payment_comment = $this->status_payment_comment;
+        $delivery->saveOrFail();
+        $this->setStatus($delivery->id, Delivery::STATUS_PAYMENT);
+    }
+
     public function delete()
     {
         if(!$this->deliveryId) {
