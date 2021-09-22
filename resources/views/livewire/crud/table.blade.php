@@ -144,7 +144,7 @@
                 });
             });
             $('.phone').inputmask({'mask': '+7 (999) 999-9999', 'clearMaskOnLostFocus' : false, 'autoUnmask': true});
-            $('.city').inputmask("a AX{3,}", {
+            $('.city').inputmask("a AX{2,}", {
                 definitions: {
                     "X": {
                         validator: "[А-Яа-я -]"

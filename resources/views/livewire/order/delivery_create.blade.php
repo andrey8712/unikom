@@ -271,7 +271,7 @@
                 }
             });*/
             //$('.city').inputmask({mask: "a Az{3,}"});
-            $('.city').inputmask("a AX{3,}", {
+            $('.city').inputmask("a AX{2,}", {
                 definitions: {
                     "X": {
                         validator: "[А-Яа-я -]"
