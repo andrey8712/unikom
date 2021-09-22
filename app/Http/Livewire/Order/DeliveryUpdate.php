@@ -56,9 +56,10 @@ class DeliveryUpdate extends Component
         $this->name = $delivery->driver ? $delivery->driver->name : null;
         $this->middle_name = $delivery->driver ? $delivery->driver->middle_name : null;
         $this->passport_series_and_number = $delivery->driver ? $delivery->driver->passport_series_and_number : null;
-        $this->passport_date_of_issue = $delivery->driver ? $delivery->driver->passport_date_of_issue : null;
+        $this->passport_date_of_issue = $delivery->driver ? $delivery->driver->passport_date_of_issue->format('Y-m-d') : null;
         $this->passport_issued_by = $delivery->driver ? $delivery->driver->passport_issued_by : null;
-        $this->phone = $delivery->driver ? $delivery->driver->email : null;
+        $this->phone = $delivery->driver ? $delivery->driver->phone : null;
+        $this->email = $delivery->driver ? $delivery->driver->email : null;
         $this->carrier_id = $delivery->carrier_id;
         $this->city = $delivery->city;
         $this->street = $delivery->street;
@@ -105,7 +106,7 @@ class DeliveryUpdate extends Component
         if($this->carrier_id == 1 || $this->carrier_id == 2) {
             $rulesCarrier = [
                 'city' => 'required|string',
-                'home' => 'required|string',
+                'home' => 'nullable|string',
                 'street' => 'required|string',
                 'client_price' => 'required|integer',
                 'driver_price' => 'required|integer',

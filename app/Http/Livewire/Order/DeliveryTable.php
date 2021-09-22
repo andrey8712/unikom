@@ -108,7 +108,7 @@ class DeliveryTable extends Component
 
         $this->deliveryId = $delivery->id;
 
-        if($delivery->current_status < Delivery::STATUS_DRIVER || $delivery->send_proxy != 0) {
+        if($delivery->current_status < Delivery::STATUS_DRIVER) {
             $this->dispatchBrowserEvent('add_notify', ['type' => 'danger', 'text' => 'Доверенность не может быть отправлена.', 'title' => 'Доставка №' . $delivery->id]);
             $this->dispatchBrowserEvent('close_modal');
             $this->emit('refresh');
@@ -309,11 +309,12 @@ class DeliveryTable extends Component
 
         $delivery = Delivery::find($this->deliveryId)->delete();
 
-        $this->deliveryId = null;
         $this->dispatchBrowserEvent('close_modal');
         $this->emit('refresh');
 
-        $this->dispatchBrowserEvent('add_notify', ['type' => 'success', 'text' => 'Запись удалена.', 'title' => 'Доставка №' . $delivery->id]);
+        $this->dispatchBrowserEvent('add_notify', ['type' => 'success', 'text' => 'Запись удалена.', 'title' => 'Доставка №' . $this->deliveryId]);
+
+        $this->deliveryId = null;
     }
 
     public function setPayment($id)

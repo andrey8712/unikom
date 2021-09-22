@@ -78,4 +78,23 @@ class Order extends Model
         return $out;
     }
 
+    public function getLoadingText()
+    {
+        $out = [];
+
+        if($this->loading_side) {
+            $out[] = 'боковая';
+        }
+
+        if($this->loading_back) {
+            $out[] = 'задняя';
+        }
+
+        if($this->loading_top) {
+            $out[] = 'верхняя';
+        }
+
+        return implode(', ', $out);
+    }
+
 }

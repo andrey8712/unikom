@@ -38,7 +38,7 @@ class Setting extends Component
             'name' => 'required|string',
             'surname' => 'required|string',
             'email' => 'required|email',
-            'password' => 'password|string|min:6|max:10',
+            'password' => 'required|string|min:6|max:10',
         ]);
 
         $user->name = $this->name;

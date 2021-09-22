@@ -125,7 +125,7 @@ class DeliveryCreate extends Component
         if($this->carrier_id == 1 || $this->carrier_id == 2) {
             $rulesCarrier = [
                 'city' => 'required|string',
-                'home' => 'required|string',
+                'home' => 'nullable|string',
                 'street' => 'required|string',
                 'client_price' => 'required|integer',
                 'driver_price' => 'required|integer',

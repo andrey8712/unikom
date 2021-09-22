@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Order;
 
 
 use App\Entityes\Order;
+use App\Entityes\Setting;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -39,6 +41,17 @@ class Table extends Component
     public function setId($id)
     {
         $this->orderId = $id;
+    }
+
+    public function sendEmail($id)
+    {
+        if(!$order = Order::find($id)) return;
+
+        $settings = Setting::first();
+
+        Mail::to($settings->order_email)->send(new \App\Mail\Order($order));
+
+        $this->dispatchBrowserEvent('add_notify', ['type' => 'success', 'text' => 'Письмо отправленно.', 'title' => 'Заявка №' . $order->id]);
     }
 
     public function sortBy($column)
@@ -81,6 +94,20 @@ class Table extends Component
         $this->customer_payment_status_comment = null;
 
         $this->dispatchBrowserEvent('add_notify', ['type' => 'success', 'text' => 'Оплата от грузополучателя получена.', 'title' => 'Заказ №' . $order->id]);
+    }
+
+    public function delete()
+    {
+        if(!$this->orderId) {
+            return;
+        }
+
+        $order = Order::find($this->orderId)->delete();
+
+        $this->dispatchBrowserEvent('close_modal');
+        $this->emit('refresh');
+
+        $this->dispatchBrowserEvent('add_notify', ['type' => 'success', 'text' => 'Запись удалена.', 'title' => 'Заявка №' . $this->orderId]);
     }
 
     public function render()

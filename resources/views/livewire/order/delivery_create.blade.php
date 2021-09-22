@@ -264,7 +264,21 @@
                 $('#select2-select-driver-id-container').html('<span class="select2-selection__placeholder">Введите фамилию</span>');
             })
             $('.phone').inputmask({'mask': '+7 (999) 999-9999', 'clearMaskOnLostFocus' : false, 'autoUnmask': true});
-            $('.city').inputmask({mask: "a Aa{3,}"});
+            /*$.extend($.inputmask.defaults.definitions, {
+                'z': {
+                    validator: "[А-яа-я]",
+                    cardinality: 1
+                }
+            });*/
+            //$('.city').inputmask({mask: "a Az{3,}"});
+            $('.city').inputmask("a AX{3,}", {
+                definitions: {
+                    "X": {
+                        validator: "[А-Яа-я -]"
+                    }
+                }
+            });
+            //$('.city').inputmask({ regex: '^[а-я] [А-Я][А-Яа-я -]*$' });
             $('#select-driver-id').on('change', function (e) {
                 var data = $('#select-driver-id').select2('val');
                 console.log(data);

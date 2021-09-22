@@ -73,7 +73,7 @@ class Address extends CrudTable
     protected $rules = [
         'city' => 'required|string',
         'street' => 'required|string',
-        'home' => 'required|string',
+        'home' => 'nullable|string',
         'comment' => 'nullable|string',
     ];
 
