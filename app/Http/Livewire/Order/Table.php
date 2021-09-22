@@ -19,7 +19,7 @@ class Table extends Component
 
     public $sortColumn = 'id';
     public $sortDirection = 'desc';
-    public $perPage = 1;
+    public $perPage = 25;
 
     public $searchCustomerTitle = null;
     public $searchPaymentStatus = null;
