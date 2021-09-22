@@ -19,7 +19,7 @@ class Table extends Component
 
     public $sortColumn = 'id';
     public $sortDirection = 'desc';
-    public $perPage = 25;
+    public $perPage = 1;
 
     public $searchCustomerTitle = null;
     public $searchPaymentStatus = null;
@@ -28,6 +28,8 @@ class Table extends Component
     public $searchDateAfter;
 
     public $orderId;
+
+    protected $paginationTheme = 'bootstrap';
 
     protected $listeners = [
         '$refresh'

@@ -43,6 +43,12 @@ class DeliveryTable extends Component
     public $imagePath;
     public $proxyViewMode = false;
 
+    protected $paginationTheme = 'bootstrap';
+
+    protected $listeners = [
+        '$refresh'
+    ];
+
     public function mount($id = null)
     {
         if($id) {
