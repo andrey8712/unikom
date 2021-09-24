@@ -53,6 +53,9 @@ class Table extends Component
 
         Mail::to($settings->order_email)->send(new \App\Mail\Order($order));
 
+        $order->email_send = 1;
+        $order->saveOrFail();
+
         $this->dispatchBrowserEvent('add_notify', ['type' => 'success', 'text' => 'Письмо отправленно.', 'title' => 'Заявка №' . $order->id]);
     }
 
