@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Hash;
 |
 */
 
-Route::get('/create-admin', function(){
-    /*$user = new \App\Models\User();
+/*Route::get('/create-admin', function(){
+    $user = new \App\Models\User();
 
     $user->name = 'Admin';
     $user->email = 'proger.gost@gmail.com';
     $user->password = Hash::make('hw1BRJXOP');
-    $user->saveOrFail();*/
+    $user->saveOrFail();
 
     $user = new \App\Models\User();
 
@@ -27,11 +27,11 @@ Route::get('/create-admin', function(){
     $user->email = 'predwarr@gmail.com';
     $user->password = Hash::make('Unikom56777');
     $user->saveOrFail();
-});
+});*/
 
-Route::get('/test-email', function(){
+/*Route::get('/test-email', function(){
     \Illuminate\Support\Facades\Mail::to('proger.gost@gmail.com')->send(new \App\Mail\Base('Доверенность на доставку.'));
-});
+});*/
 
 Route::middleware('auth')->group(function(){
 

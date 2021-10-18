@@ -21,7 +21,7 @@
 <ul>
 @foreach($order->products as $product)
         <li size="16px">
-            <b>{{$product->product->title}} - {{$product->count}} шт.</b><br>
+            <b>{{$product->product->title}} - {{$product->count}} тн.</b><br>
             с выгрузкой на {{$order->desired_date->addDay()->format('d.m.Y')}}.<br>
             Тип выгрузки: {{$order->getLoadingText()}}.<br>
             Адрес выгрузки: {{$order->city}}, {{$order->street}} {{$order->home}}.<br>

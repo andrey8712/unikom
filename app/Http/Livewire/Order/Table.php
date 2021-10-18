@@ -55,7 +55,7 @@ class Table extends Component
 
         $order->email_send = 1;
         $order->saveOrFail();
-
+        $this->emit('refresh');
         $this->dispatchBrowserEvent('add_notify', ['type' => 'success', 'text' => 'Письмо отправленно.', 'title' => 'Заявка №' . $order->id]);
     }
 
